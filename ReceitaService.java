@@ -12,12 +12,9 @@ public class ReceitaService {
 
     public boolean atualizarConta(String agencia, String conta, double saldo, String status)
             throws RuntimeException, InterruptedException {
-		
-			
-        // Formato agencia: 0000
-        if (agencia == null || agencia.length() != 4) {
-            return false;
-        }
+
+
+        validarAgencia(agencia);
         
         // Formato conta: 000000
         if (conta == null || conta.length() != 6) {
@@ -45,6 +42,14 @@ public class ReceitaService {
             throw new RuntimeException("Error");
         }
 
+        return true;
+    }
+
+    private boolean validarAgencia(String agencia){
+        // Formato agencia: 0000
+        if (agencia == null || agencia.length() != 4) {
+            return false;
+        }
         return true;
     }
 }
